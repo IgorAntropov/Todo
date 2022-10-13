@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer__container _container">
       <span class="title">
-        Example to-do-list for portfolio
+        Example to-do list for portfolio
       </span>
     </div>
   </footer>

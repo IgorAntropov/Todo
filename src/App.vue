@@ -20,9 +20,13 @@ import Footer from "./views/Footer.vue";
 :root {
   --color-for-title: #737373;
   --color-for-text: #B0B0B0FF;
+  --color-for-hover: rgba(203, 203, 203, 0.3);
   --color-for-border: #EFF5FF;
   --color-for-other-background: #FFFFFF;
   --color-for-main-background: linear-gradient(90deg, #FCFCFC, #F7F7F7, #F7F7F7, #F7F7F7, #FCFCFC);
+  --color-status-common: #FFFFFF;
+  --color-status-process: #E59604FF;
+  --color-status-closed: #06AF03FF;
 }
 
 html, body, #app {

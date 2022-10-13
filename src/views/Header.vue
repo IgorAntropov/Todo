@@ -3,22 +3,22 @@
     <div class="header__container _container">
       <nav class="header__menu menu">
         <ul class="menu__list">
-          <li class="menu__item">
+          <li class="menu__item active-tab" data-route="home" @click.prevent="checkActiveTab">
             <RouterLink class="menu__link" to="/">Home</RouterLink>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" data-route="calendar" @click.prevent="checkActiveTab">
             <RouterLink class="menu__link" to="/calendar">Calendar</RouterLink>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" data-route="meetings" @click.prevent="checkActiveTab">
             <RouterLink class="menu__link" to="/meetings">Meetings</RouterLink>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" data-route="settings" @click.prevent="checkActiveTab">
             <RouterLink class="menu__link" to="/settings">Settings</RouterLink>
           </li>
         </ul>
       </nav>
 
-      <div class="profile">
+      <div class="profile" data-route="profile" @click.prevent="checkActiveTab">
         <RouterLink class="menu__link" to="/profile">
           <i class="material-icons">account_circle</i>
         </RouterLink>
@@ -34,7 +34,20 @@ export default {
   name: "header",
   components: {
     RouterLink
-  }
+  },
+  methods: {
+    checkActiveTab() {
+      const activeTab = document.querySelector('.active-tab');
+      if (activeTab) {
+        activeTab.classList.remove('active-tab');
+      }
+
+      const activeRoute = document.querySelector(`[data-route="${this.$route.name}"]`);
+      if (activeRoute) {
+        activeRoute.classList.add('active-tab');
+      }
+    }
+  },
 }
 </script>
 
@@ -54,6 +67,15 @@ export default {
     align-items: center;
     min-height: 100px;
 
+    .active-tab {
+      background: var(--color-for-hover);
+      border-radius: 15px;
+    }
+
+    .header__menu {
+      margin: 0 0 0 35px;
+    }
+
     .menu {
       padding: 5px 0;
 
@@ -66,6 +88,12 @@ export default {
         .menu__item {
           list-style-type: none;
           cursor: pointer;
+          padding: 10px;
+
+          &:hover {
+            background: var(--color-for-hover);
+            border-radius: 15px;
+          }
 
           &:not(:last-child) {
             margin: 0 20px 0 0;
@@ -77,6 +105,9 @@ export default {
             font-weight: 600;
             text-decoration: none;
             font-size: calc(1em + 1vw);
+            width: 100%;
+            height: 100%;
+            display: flex;
           }
         }
       }
@@ -84,6 +115,7 @@ export default {
 
     .profile {
       cursor: pointer;
+      padding: 10px;
 
       i {
         font-size: calc(2em + 2vw);
