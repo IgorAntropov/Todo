@@ -117,6 +117,11 @@ export default {
       cursor: pointer;
       padding: 10px;
 
+      &:hover {
+        background: var(--color-for-hover);
+        border-radius: 15px;
+      }
+
       i {
         font-size: calc(2em + 2vw);
         color: var(--color-for-title);

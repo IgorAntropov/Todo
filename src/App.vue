@@ -21,7 +21,7 @@ import Footer from "./views/Footer.vue";
   --color-for-title: #737373;
   --color-for-text: #B0B0B0FF;
   --color-for-hover: rgba(203, 203, 203, 0.3);
-  --color-for-border: #EFF5FF;
+  --color-for-border: #858585;
   --color-for-other-background: #FFFFFF;
   --color-for-main-background: linear-gradient(90deg, #FCFCFC, #F7F7F7, #F7F7F7, #F7F7F7, #FCFCFC);
   --color-status-common: #FFFFFF;
@@ -56,5 +56,6 @@ html, body, #app {
   overflow-x: hidden;
   overflow-y: auto;
   background: var(--color-for-main-background);
+  max-height: calc(100vh - 160px);
 }
 </style>
