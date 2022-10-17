@@ -4,7 +4,7 @@
       <div class="main-block__task-container">
         <div
             class="main-block__tasks-list"
-            v-show="getFullTasksList.length"
+            v-if="getFullTasksList.length"
         >
           <TaskItem
               v-for="(task, index) in getFullTasksList"
@@ -13,7 +13,7 @@
           ></TaskItem>
         </div>
         <h1
-            v-show="!getFullTasksList.length"
+            v-else
             class="main-block__title"
         >
           Your to-do list is empty!

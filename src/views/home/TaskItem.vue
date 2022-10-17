@@ -39,6 +39,12 @@
       >
         <i class="material-icons status-icon">task_alt</i>
       </button>
+      <button
+          class="status-btn delete-task-btn"
+          @click.prevent="removeTask"
+      >
+        <i class="material-icons status-icon">delete_forever</i>
+      </button>
     </div>
     <div class="task-description">
       <span class="time description">
@@ -92,10 +98,10 @@ export default {
     'task'
   ],
   mounted() {
-    this.taskTitle = this.task.title;
-    this.taskDate = this.task.due;
-    this.taskDescription = this.task.description;
-    this.taskStatus = this.task.status;
+    this.setData();
+  },
+  updated() {
+    this.setData();
   },
   components: {
     Modal,
@@ -115,14 +121,23 @@ export default {
     getFormatDate() {
       return `${new Date(this.taskDate).toLocaleDateString()} ${new Date(this.taskDate).toLocaleTimeString()}`;
     },
+    setData() {
+      return () => {
+        this.taskTitle = this.task.title;
+        this.taskDate = this.task.due;
+        this.taskDescription = this.task.description;
+        this.taskStatus = this.task.status;
+      }
+    },
   },
   methods: {
     ...mapActions(
         [
-          'changeTask'
+          'changeTask',
+          'deleteTask',
         ]
     ),
-    saveChanges() {
+    saveChanges(needSwitch = true) {
       const payload = {
         id: this.task.id,
         title: this.taskTitle,
@@ -132,10 +147,14 @@ export default {
       };
 
       this.changeTask(payload);
-      this.switchDetailsTaskModal();
+
+      if (needSwitch) {
+        this.switchDetailsTaskModal();
+      }
     },
     changeDate(event) {
       this.taskDate = event.currentTarget.value;
+      this.saveChanges(false);
     },
     changeStatus(event) {
       const target = event.currentTarget;
@@ -151,6 +170,11 @@ export default {
           this.taskStatus = 'closed';
         }
       }
+
+      this.saveChanges(false);
+    },
+    removeTask() {
+      this.deleteTask(this.task.id);
     },
   }
 }
@@ -207,6 +231,10 @@ export default {
       color: white;
     }
 
+    .delete-task-btn {
+      pointer-events: auto;
+    }
+
     .task-description {
       .description {
         color: white;
@@ -243,6 +271,21 @@ export default {
       z-index: 50;
       border: none;
       box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
+
+      &.delete-task-btn {
+        color: red;
+      }
+      &.common {
+        color: var(--color-status-process);
+      }
+      &.process {
+        &.next-status {
+          color: var(--color-status-closed);
+        }
+      }
+      &.closed {
+        color: var(--color-status-closed);
+      }
     }
   }
 
