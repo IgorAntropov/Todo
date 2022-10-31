@@ -52,10 +52,10 @@ html, body, #app {
 
 .main {
   flex: 1 1 auto;
-  padding: 100px 0 0 0;
+  padding: 150px 0 0 0;
   overflow-x: hidden;
   overflow-y: auto;
   background: var(--color-for-main-background);
-  max-height: calc(100vh - 160px);
+  max-height: calc(100vh - 210px);
 }
 </style>

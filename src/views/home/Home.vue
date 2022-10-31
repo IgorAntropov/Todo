@@ -128,7 +128,7 @@ export default {
      width: 100%;
 
      .main-block__tasks-list {
-       max-height: calc(100vh - 230px);
+       max-height: calc(100vh - 280px);
        overflow-y: auto;
        border-radius: 15px;
        margin: 5px 0;

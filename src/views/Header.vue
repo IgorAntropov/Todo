@@ -35,6 +35,9 @@ export default {
   components: {
     RouterLink
   },
+  mounted() {
+    this.checkActiveTab();
+  },
   methods: {
     checkActiveTab() {
       const activeTab = document.querySelector('.active-tab');
@@ -88,7 +91,6 @@ export default {
         .menu__item {
           list-style-type: none;
           cursor: pointer;
-          padding: 10px;
 
           &:hover {
             background: var(--color-for-hover);
@@ -108,6 +110,7 @@ export default {
             width: 100%;
             height: 100%;
             display: flex;
+            padding: 10px;
           }
         }
       }
@@ -115,7 +118,6 @@ export default {
 
     .profile {
       cursor: pointer;
-      padding: 10px;
 
       &:hover {
         background: var(--color-for-hover);
@@ -125,6 +127,7 @@ export default {
       i {
         font-size: calc(2em + 2vw);
         color: var(--color-for-title);
+        padding: 10px;
       }
     }
   }
