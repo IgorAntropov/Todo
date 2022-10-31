@@ -246,6 +246,10 @@ export default {
     .main-block__container {
       flex-direction: column;
 
+      .main-block__profile-avatar {
+        margin-right: 0;
+      }
+
       .main-block__profile-data {
         margin-bottom: 15px;
       }
