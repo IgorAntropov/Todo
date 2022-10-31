@@ -246,12 +246,6 @@ export default {
     .main-block__container {
       flex-direction: column;
 
-      .main-block__profile-avatar {
-        .profile-avatar__avatar {
-          max-width: 100px;
-        }
-      }
-
       .main-block__profile-data {
         margin-bottom: 15px;
       }
