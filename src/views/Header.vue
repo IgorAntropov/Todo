@@ -3,22 +3,22 @@
     <div class="header__container _container">
       <nav class="header__menu menu">
         <ul class="menu__list">
-          <li class="menu__item active-tab" data-route="home" @click.prevent="checkActiveTab">
+          <li class="menu__item active-tab" data-route="home">
             <RouterLink class="menu__link" to="/">Home</RouterLink>
           </li>
-          <li class="menu__item" data-route="calendar" @click.prevent="checkActiveTab">
+          <li class="menu__item" data-route="calendar">
             <RouterLink class="menu__link" to="/calendar">Calendar</RouterLink>
           </li>
-          <li class="menu__item" data-route="meetings" @click.prevent="checkActiveTab">
+          <li class="menu__item" data-route="meetings">
             <RouterLink class="menu__link" to="/meetings">Meetings</RouterLink>
           </li>
-          <li class="menu__item" data-route="settings" @click.prevent="checkActiveTab">
+          <li class="menu__item" data-route="settings">
             <RouterLink class="menu__link" to="/settings">Settings</RouterLink>
           </li>
         </ul>
       </nav>
 
-      <div class="profile" data-route="profile" @click.prevent="checkActiveTab">
+      <div class="profile" data-route="profile">
         <RouterLink class="menu__link" to="/profile">
           <i class="material-icons">account_circle</i>
         </RouterLink>
@@ -35,8 +35,13 @@ export default {
   components: {
     RouterLink
   },
-  mounted() {
+  created() {
     this.checkActiveTab();
+  },
+  watch: {
+    '$route.name'() {
+      this.checkActiveTab();
+    }
   },
   methods: {
     checkActiveTab() {
